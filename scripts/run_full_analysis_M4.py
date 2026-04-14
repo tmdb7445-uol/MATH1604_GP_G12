@@ -22,7 +22,7 @@ def main():
         extract_answers_sequence(file_path)
 
     # 3. Collate files into one (using M2)
-    #Takes the folder of 40 files and makes 1 file
+    #Takes the folder of 70 files and makes 1 file
     collate_answer_files(data_folder)
 
     # 4. Compute summaries (uses M3) - uses the 1 collated file
