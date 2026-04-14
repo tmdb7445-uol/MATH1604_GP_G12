@@ -7,14 +7,13 @@ from data_extraction_M1 import extract_answers_sequence
 from data_analysis_M3 import generate_means_sequence, visualize_data
 
 def main():
-    cloud_url = "..."
+    cloud_url = "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main"
     data_folder = "data"
     collated_file = "output/collated_answers.txt"
-    num_respondents = 40 #total respondents Based on the data
+    num_respondents = 70 #total respondents Based on the data
 
     # 1. Download and prepare data (uses M2)
-    for i in range(1, num_respondents + 1):
-        download_answer_files(cloud_url , data_folder, i)
+    download_answer_files(cloud_url , data_folder, num_respondents)
 
     # 2. Extract sequences ( using M1)
     # Team Leader has to apply extraction to EVERY respondent file
@@ -39,12 +38,4 @@ if __name__ == "__main__":
 
 
 
-
-import data_extraction_M1
-
-a = data_extraction_M1.extract_answers_sequence(
-    r"a.txt"
-)
-
-print(a)
 
