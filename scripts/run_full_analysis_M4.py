@@ -1,10 +1,10 @@
 
 
-from scripts.data_preparation_M2_OLD import download_answer_files, collate_answer_files
+from scripts.data_preparation_M2 import download_answer_files, collate_answer_files
 
-from scripts.data_extraction_M1_OLD import extract_answers_sequence
+from scripts.data_extraction_M1 import extract_answers_sequence
 
-from scripts.data_analysis_M3_OLD import generate_means_sequence, visualize_data
+from scripts.data_analysis_M3 import generate_means_sequence, visualize_data
 
 def main():
     cloud_url = "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main"
