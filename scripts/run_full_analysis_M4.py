@@ -10,7 +10,7 @@ def main():
     cloud_url = "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main"
     data_folder = "data"
     collated_file = "output/collated_answers.txt"
-    num_respondents = 70 #total respondents Based on the data
+    num_respondents = 64 #total respondents Based on the data
 
     # 1. Download and prepare data (uses M2)
     download_answer_files(cloud_url , data_folder, num_respondents)
