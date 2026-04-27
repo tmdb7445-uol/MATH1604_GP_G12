@@ -6,6 +6,9 @@ from data_extraction_M1 import extract_answers_sequence
 
 from data_analysis_M3 import generate_means_sequence, visualize_data
 
+import matplotlib.pyplot as plt
+
+
 def main():
     cloud_url = "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main"
     data_folder = "data"
@@ -30,7 +33,12 @@ def main():
 
     # 5. Visualise results (using M3) -using the 1 collated file
     visualize_data(collated_file, 1) # Scatter plot
+    plt.savefig("output/plot_scatter.png")
+    plt.close()
+
     visualize_data(collated_file, 2) # Line plot
+    plt.savefig("output/plot_line.png")
+    plt.close()
 
 
 if __name__ == "__main__":
