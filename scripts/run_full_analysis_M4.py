@@ -15,10 +15,10 @@ def main():
     collated_file = "output/collated_answers.txt"
     num_respondents = 64 #total respondents Based on the data
 
-    # 1. Download and prepare data (uses M2)
+    # 1. Download and prepare data (uses M2s)
     download_answer_files(cloud_url , data_folder, num_respondents)
 
-    # 2. Extract sequences ( using M1)
+    # 2. Extract sequences ( using M1s)
     # Team Leader has to apply extraction to EVERY respondent file
     for i in range(1, num_respondents + 1):
         file_path = f"{data_folder}/answers_respondent_{i}.txt"
@@ -32,12 +32,12 @@ def main():
     means_list = generate_means_sequence(collated_file)
 
     # 5. Visualise results (using M3) -using the 1 collated file
-    visualize_data(collated_file, 1) # Scatter plot
-    plt.savefig("output/plot_scatter.png")
+    visualize_data(collated_file, 1) 
+    plt.savefig("output/plot_scatter.png") #saves a scatterplot
     plt.close()
 
-    visualize_data(collated_file, 2) # Line plot
-    plt.savefig("output/plot_line.png")
+    visualize_data(collated_file, 2) 
+    plt.savefig("output/plot_line.png") # saves a line plot
     plt.close()
 
 
