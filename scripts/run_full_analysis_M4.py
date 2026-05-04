@@ -15,11 +15,11 @@ def main():
     collated_file = "output/collated_answers.txt"
     num_respondents = 64 #total respondents Based on the data
 
-    # 1. Download and prepare data (uses M2s)
+    # 1. Download data (uses M2s)
     download_answer_files(cloud_url , data_folder, num_respondents)
 
     # 2. Extract sequences ( using M1s)
-    # Team Leader has to apply extraction to EVERY respondent file
+
     for i in range(1, num_respondents + 1):
         file_path = f"{data_folder}/answers_respondent_{i}.txt"
         extract_answers_sequence(file_path)
