@@ -4,7 +4,7 @@ data_analysis_M3.py
 This module is to analyse the collated quiz answers from my Team Member 2.
 Mainly, it has 2 functions;
   1. generate_means_sequence: this function will calculate the mean of each question of 100 questions
-  2. visualize_data : this function function will plot the data as a graph.
+  2. visualize_data : this function will plot the data as a graph.
   
 Author: Ahmad Nidhal Bin ZAIDI
 Module: MATH1604 Modelling for Big Data
@@ -14,18 +14,23 @@ import matplotlib.pyplot as plt
 
 def _parse_collated_file(collated_answers_path):
     """
-    The collated answers file will be read and it will return eveyone's answer as a list.
+    The collated answers file will be read and
+    it will return eveyone's answer as a list.
     
-    Read a collated answers file and return a list of answer sequences.
-
-    The collated file contains one respondent's answers per line (100
-    space-separated integers: 1–4, or 0 for unanswered). Respondents
-    are separated by a line containing a single asterisk '*'.
+    Each line of 100 integers is representing a 
+    list of a student answer in a 100 questions set.
+    
+    The answer for each students will be represented as 
+    numbers from 1 - 4, and 0 for unanswered questions.
+    
+    Also, the repondents liss of 100 integers are separated by the asterisk symbol "*" 
+    so that it can be easily differentiate.
 
     Parameters
     ----------
     collated_answers_path : str
-        Path to the collated_answers.txt file produced by Team Member 2.
+      This is the file path to connect to the big 'collated_answer.txt' 
+      file that my Team Member 2 has created.
 
     Returns
     -------
@@ -36,9 +41,9 @@ def _parse_collated_file(collated_answers_path):
     Raises
     ------
     FileNotFoundError
-        If the file at collated_answers_path does not exist.
+      This triggers if the collated_answer_path file is not found.
     ValueError
-        If a data line does not contain exactly 100 integers.
+        A safety precaution to ensure every single line has exactly 100 numbers.
     """
     all_sequences = []
 
