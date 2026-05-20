@@ -111,8 +111,28 @@ def collate_answer_files(data_folder_path: str) -> None:
       The output folder is placed alongside the data folder, so if your data folder is at 
       "data", the output will go to "output/collated_answers.txt".
 
-      
-      
+      Parameters:
+      -----------
+      data_folder_path : str
+           Path to the folder containing the individual respondent files.
+           e.g. "data".
+
+
+      Returns:
+      --------
+      None
+
+
+      Raises:
+      -------
+      FileNotFoundError - If the data folder path you provided does not exist.
+      ValueError - If the data folder exists but contains no respondent files.
+
+
+      Notes:
+      ------
+      The * separator appears between sections only, not after the last one. So
+      for 64 respondents, there will be 63 aesterisk lines in total.
       """
     if not os.path.isdir(data_folder_path):
         raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
