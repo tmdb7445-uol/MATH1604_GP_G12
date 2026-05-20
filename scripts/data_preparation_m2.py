@@ -18,12 +18,68 @@ from urllib.parse import urljoin
 
 
 def download_answer_files(cloud_url: str, path_to_data_folder: str, respondent_index: int) -> None:
-    if not isinstance(cloud_url, str) or not cloud_url.strip():
-        raise ValueError("cloud_url must be a non-empty string.")
-    if not isinstance(path_to_data_folder, str) or not path_to_data_folder.strip():
-        raise ValueError("path_to_data_folder must be a non-empty string.")
-    if not isinstance(respondent_index, int) or respondent_index <= 0:
-        raise ValueError("respondent_index must be a positive integer.")
+      """
+      Download quiz answer files from GitHub and saves them locally.
+
+      This function goes through each respondent file one by one, from a1.txt up to aN.txt, 
+      fetches it from the given URL, and saves it into the data folder with a clear name like 
+      answers_respondent_1.txt. If the folder does not exist yet, it gets created automatically.
+
+      If a file cannot be download, for example, because it does not exist on the server, the 
+      function stops and raises an OSError telling you which URL failed. It does not silently 
+      skip missing files.
+      
+
+      Parameters:
+      -----------
+      cloud_url : str
+           The base URL where the files are hosted.
+           "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main"
+      path_to_data_folder : str
+           Where to save the downloaded files on your computer.
+           e.g. "data"
+      respondent_index : int
+           How many files to try to download.
+           e.g. passing 64 will attempt to download a1.txt through a64.txt.
+           
+
+      Returns: 
+      --------
+      None
+
+
+      Raises:
+      -------
+      ValueError - If any of the inputs are empty or invalid.
+      OSError - If a file could not be downloaded, with a message showing the URL that failed
+
+
+      Examples:
+      ---------
+      Download all 64 respondent files:
+
+         download_answer_files(
+               "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main",
+               "data",
+               64
+         )
+         
+      Test what happens when ask for more files than exist:
+      
+         download_answer_files(
+               "https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main",
+               "data",
+               70
+         )
+         #Files a65.txt to a70.txt do not exist, so this will raise an OSError when it reaches a65.txt.
+      
+      """
+      if not isinstance(cloud_url, str) or not cloud_url.strip():
+            raise ValueError("cloud_url must be a non-empty string.")
+      if not isinstance(path_to_data_folder, str) or not path_to_data_folder.strip():
+           raise ValueError("path_to_data_folder must be a non-empty string."
+      if not isinstance(respondent_index, int) or respondent_index <= 0:
+           raise ValueError("respondent_index must be a positive integer.")
 
     os.makedirs(path_to_data_folder, exist_ok=True)
 
