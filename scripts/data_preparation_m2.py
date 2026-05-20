@@ -100,6 +100,9 @@ def download_answer_files(cloud_url: str, path_to_data_folder: str, respondent_i
 
 def collate_answer_files(data_folder_path: str) -> None:
       """
+      Combines all individual respondent files into one single file.
+
+      
       
       """
     if not os.path.isdir(data_folder_path):
