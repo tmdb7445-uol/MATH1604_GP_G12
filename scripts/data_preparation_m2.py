@@ -9,8 +9,8 @@ This module includes two functions that work together to bring data into the Ana
 
       2. collate_answer_files - It consolidates all locally stored respondent files into a single, 
                                  collated dataset for subsequent processing by Team Member 3 and 4
-"""
 ================================================================================================================================
+"""
 
 import os
 import re
@@ -105,12 +105,12 @@ def collate_answer_files(data_folder_path: str) -> None:
 
       This function reads every answers_respondent_N.txt files from the data folder,
       sorts them by respondent number and writes them all into a single file called 
-      collate_answers.txt inside the output folder. A line containing just an asterisk (*) 
+      collated_answers.txt inside the output folder. A line containing just an asterisk (*) 
       is placed between each respondent's section so that the file can be split back apart
       later.
 
       The output folder is placed alongside the data folder, so if your data folder is at 
-      "data", the output will go to "output/collate_answers.txt".
+      "data", the output will go to "output/collated_answers.txt".
 
       Parameters:
       -----------
