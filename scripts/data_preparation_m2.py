@@ -83,22 +83,25 @@ def download_answer_files(cloud_url: str, path_to_data_folder: str, respondent_i
 
     os.makedirs(path_to_data_folder, exist_ok=True)
 
-    if not cloud_url.endswith("/"):
-        cloud_url += "/"
+      if not cloud_url.endswith("/"):
+           cloud_url += "/"
 
-    for i in range(1, respondent_index + 1):
-        source_name = f"a{i}.txt"
-        destination_name = f"answers_respondent_{i}.txt"
-        source_url = urljoin(cloud_url, source_name)
-        destination_path = os.path.join(path_to_data_folder, destination_name)
-
-        try:
-            urllib.request.urlretrieve(source_url, destination_path)
-        except Exception as e:
-            raise OSError(f"Could not download file from {source_url}") from e
+      for i in range(1, respondent_index + 1):
+            source_name = f"a{i}.txt"
+            destination_name = f"answers_respondent_{i}.txt"
+            source_url = urljoin(cloud_url, source_name)
+            destination_path = os.path.join(path_to_data_folder, destination_name)
+            
+            try:
+                  urllib.request.urlretrieve(source_url, destination_path)
+            except Exception as e:
+                  raise OSError(f"Could not download file from {source_url}") from e
 
 
 def collate_answer_files(data_folder_path: str) -> None:
+      """
+      
+      """
     if not os.path.isdir(data_folder_path):
         raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
     
