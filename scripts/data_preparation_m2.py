@@ -9,7 +9,7 @@ This module includes two functions that work together to bring data into the Ana
 
       2. collate_answer_files - It consolidates all locally stored respondent files into a single, 
                                  collated dataset for subsequent processing by Team Member 3 and 4
-================================================================================================================================
+-------------------------------------------------------------------------------------------------------------------------------
 """
 
 import os
