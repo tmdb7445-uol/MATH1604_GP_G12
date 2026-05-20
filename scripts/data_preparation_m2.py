@@ -1,3 +1,16 @@
+MATH1604 Group Project 25/26 - Team Member 2
+
+
+This module includes two functions that work together to bring data into the Analysis of Python Quiz Response project:
+
+      1. download_answer_files - It acquires the raw response files from a remote GitHub repository 
+                                 and achives them locally under a uniform naming structure.
+
+      2. collated_answer_files - It consolidates all locally stored respondent files into a single, 
+                                 collated dataset for subsequent processing by Team Member 3 and 4
+
+================================================================================================================================
+
 import os
 import re
 import urllib.request
