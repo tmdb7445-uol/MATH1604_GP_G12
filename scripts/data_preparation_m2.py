@@ -1,3 +1,4 @@
+"""
 MATH1604 Group Project 25/26 - Team Member 2
 
 
@@ -6,9 +7,9 @@ This module includes two functions that work together to bring data into the Ana
       1. download_answer_files - It acquires the raw response files from a remote GitHub repository 
                                  and achives them locally under a uniform naming structure.
 
-      2. collated_answer_files - It consolidates all locally stored respondent files into a single, 
+      2. collate_answer_files - It consolidates all locally stored respondent files into a single, 
                                  collated dataset for subsequent processing by Team Member 3 and 4
-
+"""
 ================================================================================================================================
 
 import os
@@ -77,11 +78,11 @@ def download_answer_files(cloud_url: str, path_to_data_folder: str, respondent_i
       if not isinstance(cloud_url, str) or not cloud_url.strip():
             raise ValueError("cloud_url must be a non-empty string.")
       if not isinstance(path_to_data_folder, str) or not path_to_data_folder.strip():
-           raise ValueError("path_to_data_folder must be a non-empty string."
+           raise ValueError("path_to_data_folder must be a non-empty string.")
       if not isinstance(respondent_index, int) or respondent_index <= 0:
            raise ValueError("respondent_index must be a positive integer.")
-
-    os.makedirs(path_to_data_folder, exist_ok=True)
+      
+      os.makedirs(path_to_data_folder, exist_ok=True)
 
       if not cloud_url.endswith("/"):
            cloud_url += "/"
@@ -132,7 +133,7 @@ def collate_answer_files(data_folder_path: str) -> None:
       Notes:
       ------
       The * separator appears between sections only, not after the last one. So
-      for 64 respondents, there will be 63 aesterisk lines in total.
+      for 64 respondents, there will be 63 asterisk lines in total.
       """
       if not os.path.isdir(data_folder_path):
             raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
