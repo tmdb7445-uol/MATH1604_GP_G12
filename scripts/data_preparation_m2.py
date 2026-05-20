@@ -134,38 +134,58 @@ def collate_answer_files(data_folder_path: str) -> None:
       The * separator appears between sections only, not after the last one. So
       for 64 respondents, there will be 63 aesterisk lines in total.
       """
-    if not os.path.isdir(data_folder_path):
-        raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
-    
-    repository_root = os.path.dirname(data_folder_path)
-    output_folder = os.path.join(repository_root, "output")
-    os.makedirs(output_folder, exist_ok=True)
+      if not os.path.isdir(data_folder_path):
+            raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
+            
+      repository_root = os.path.dirname(data_folder_path)
+      output_folder = os.path.join(repository_root, "output")
+      os.makedirs(output_folder, exist_ok=True)
+      
+      output_path = os.path.join(output_folder, "collated_answers.txt")
+      
+      pattern = re.compile(r"^answers_respondent_(\d+)\.txt$")
+      
+      files_with_index = []
+      for file_name in os.listdir(data_folder_path):
+            match = pattern.match(file_name)
+            if match:
+                  try:
+                        files_with_index.append((int(match.group(1)), file_name))
+                  except ValueError:
+                        pass
+                        
+      if not files_with_index:
+            raise ValueError("No respondent answer files found in the data folder.")
+      
+      files_with_index.sort()
+      
+      with open(output_path, "w", encoding="utf-8") as out_file:
+            for idx, (_, file_name) in enumerate(files_with_index):
+                  file_path = os.path.join(data_folder_path, file_name)
+                  
+                  with open(file_path, "r", encoding="utf-8") as in_file:
+                        out_file.write(in_file.read().rstrip())
+                  out_file.write("\n")
+                  
+                  if idx != len(files_with_index) - 1:
+                        out_file.write("*\n")
 
-    output_path = os.path.join(output_folder, "collated_answers.txt")
 
-    pattern = re.compile(r"^answers_respondent_(\d+)\.txt$")
 
-    files_with_index = []
-    for file_name in os.listdir(data_folder_path):
-        match = pattern.match(file_name)
-        if match:
-            try:
-                files_with_index.append((int(match.group(1)), file_name))
-            except ValueError:
-                pass
 
-    if not files_with_index:
-        raise ValueError("No respondent answer files found in the data folder.")
 
-    files_with_index.sort()
 
-    with open(output_path, "w", encoding="utf-8") as out_file:
-        for idx, (_, file_name) in enumerate(files_with_index):
-            file_path = os.path.join(data_folder_path, file_name)
 
-            with open(file_path, "r", encoding="utf-8") as in_file:
-                out_file.write(in_file.read().rstrip())
-            out_file.write("\n")
 
-            if idx != len(files_with_index) - 1:
-                out_file.write("*\n")
+
+
+
+
+
+
+
+
+
+
+
+
