@@ -30,6 +30,9 @@ def download_answer_files(cloud_url: str, path_to_data_folder: str, respondent_i
 
 
 def collate_answer_files(data_folder_path: str) -> None:
+    if not os.path.isdir(data_folder_path):
+        raise FileNotFoundError(f"Data folder does not exist: {data_folder_path}")
+    
     repository_root = os.path.dirname(data_folder_path)
     output_folder = os.path.join(repository_root, "output")
     os.makedirs(output_folder, exist_ok=True)
