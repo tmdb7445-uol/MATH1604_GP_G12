@@ -105,12 +105,12 @@ def collate_answer_files(data_folder_path: str) -> None:
 
       This function reads every answers_respondent_N.txt files from the data folder,
       sorts them by respondent number and writes them all into a single file called 
-      collated_answers.txt inside the output folder. A line containing just an asterisk (*) 
+      collate_answers.txt inside the output folder. A line containing just an asterisk (*) 
       is placed between each respondent's section so that the file can be split back apart
       later.
 
       The output folder is placed alongside the data folder, so if your data folder is at 
-      "data", the output will go to "output/collated_answers.txt".
+      "data", the output will go to "output/collate_answers.txt".
 
       Parameters:
       -----------
