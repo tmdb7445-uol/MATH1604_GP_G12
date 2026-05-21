@@ -7,6 +7,7 @@ from data_extraction_M1 import extract_answers_sequence
 from data_analysis_M3 import generate_means_sequence, visualize_data
 
 import matplotlib.pyplot as plt
+import os
 
 
 def main():
@@ -14,19 +15,19 @@ def main():
     data_folder = "data"
     collated_file = "output/collated_answers.txt"
     num_respondents = 64 #total respondents Based on the data
+ 
+    os.makedirs("output", exist_ok=True)
 
     # 1. Download data (uses M2s)
     download_answer_files(cloud_url , data_folder, num_respondents)
 
-    # 2. Extract sequences ( using M1s)
-
-    for i in range(1, num_respondents + 1):
-        file_path = f"{data_folder}/answers_respondent_{i}.txt"
-        extract_answers_sequence(file_path)
-
-    # 3. Collate files into one (using M2)
+       # 2. Collate files into one (using M2)
     #Takes the folder of 70 files and makes 1 file
     collate_answer_files(data_folder)
+
+    #Validate the file exists
+    if not os.path.exists(collated_file):
+        raise RuntimeError("Collation failed")
 
     # 4. Compute summaries (uses M3) - uses the 1 collated file
     means_list = generate_means_sequence(collated_file)
